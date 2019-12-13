@@ -1,0 +1,12 @@
+.add-bar {
+    height: 6rem;
+    width: 100vw;
+    background-color: #400508;
+}
+
+button {
+    height: 3rem;
+    color: #a06729;
+    border: solid 1px #d8a163;
+    background: #400508
+}
