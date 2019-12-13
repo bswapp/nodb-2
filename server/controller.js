@@ -1,5 +1,6 @@
 const playedGames = [];
 const unplayedGames = [];
+let id = 0;
 
 module.exports = {
   getGames: (req, res) => {
