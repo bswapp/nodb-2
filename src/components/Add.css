@@ -1,12 +1,27 @@
 .add-bar {
-    height: 6rem;
-    width: 100vw;
-    background-color: #400508;
+  height: 6rem;
+  width: 100vw;
+  background-color: #400508;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 button {
-    height: 3rem;
-    color: #a06729;
-    border: solid 1px #d8a163;
-    background: #400508
+  height: 3rem;
+  color: #a06729;
+  border: solid 1px #d8a163;
+  background: #400508;
+  border-radius: 5px;
+}
+
+input[type="text"] {
+  background: #d8a163;
+  color: black;
+  border: solid 1px #a06729;
+  border-radius: 5px;
+}
+
+::placeholder {
+  color: #321602;
 }

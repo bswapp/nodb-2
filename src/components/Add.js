@@ -1,24 +1,31 @@
-import React, { Component } from 'react'
-import './Add.css'
+import React, { Component } from "react";
+import "./Add.css";
 
 class Add extends Component {
-    constructor() {
-        super()
-        this.state = {
+  constructor() {
+    super();
+    this.state = {};
+  }
 
-        }
-    }
+  render() {
+    return (
+      <div>
+        <div className="add-bar">
+          <input placeholder="title" type="text"></input>
 
-    render() {
-        return (
-            <div>
-                <div className="add-bar">
+          <input placeholder="mode" type="text"></input>
 
-                    <button>Add Game</button>
-                </div>
-            </div>
-        )
-    }
+          <input placeholder="cheats" type="text"></input>
+
+          <input placeholder="image" type="text"></input>
+
+          <input placeholder="notes" type="text"></input>
+
+          <button>Add Game</button>
+        </div>
+      </div>
+    );
+  }
 }
 
-export default Add
+export default Add;
