@@ -1,3 +1,8 @@
+.add {
+  position: fixed;
+  bottom: 0;
+}
+
 .add-bar {
   height: 6rem;
   width: 100vw;
@@ -5,6 +10,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  bottom: 0;
+}
+
+#title {
+  margin-left: 3%;
+  font-size: 90%;
+  color: black;
 }
 
 button {
@@ -13,9 +26,17 @@ button {
   border: solid 1px #d8a163;
   background: #400508;
   border-radius: 5px;
+  margin-right: 3%;
+  font-family: "Crimson Text", serif;
+  font-size: 17px;
+}
+
+button:hover {
+  background: white;
 }
 
 input[type="text"] {
+  height: 2rem;
   background: #d8a163;
   color: black;
   border: solid 1px #a06729;
@@ -24,4 +45,24 @@ input[type="text"] {
 
 ::placeholder {
   color: #321602;
+  font-family: "Crimson Text", serif;
+  font-size: 17px;
+}
+
+#mode {
+  height: 2rem;
+  width: 10%;
+  color: #321602;
+  background: #d8a163;
+  font-family: "Crimson Text", serif;
+  font-size: 17px;
+}
+
+#cheats {
+  height: 2rem;
+  width: 10%;
+  color: #321602;
+  background: #d8a163;
+  font-family: "Crimson Text", serif;
+  font-size: 17px;
 }

@@ -7,7 +7,13 @@ class Header extends Component {
   }
 
   render() {
-    return <header></header>;
+    return (
+      <div>
+        <header>
+          <img></img>
+        </header>
+      </div>
+    );
   }
 }
 

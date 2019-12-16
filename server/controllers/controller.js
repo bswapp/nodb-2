@@ -1,19 +1,28 @@
-const playedGames = [
+const games = [
   {
+    id: 0,
     image: "",
     title: "Trail of the Twister",
     mode: "Junior",
     cheats: "yes"
   }
 ];
-const unplayedGames = [];
+const unplayedGames = [
+  {
+    id: 1,
+    image: "",
+    title: "Midnight in Salem",
+    mode: "Junior",
+    cheats: "yes"
+  }
+];
 let id = 0;
 
 module.exports = {
   // * Get
   getGames: (req, res) => {
     //* I expect get games to get the games arrays (2)
-    res.status(200).send({ playedGames, unplayedGames });
+    res.status(200).send({ games, unplayedGames });
   },
 
   // * Post
@@ -21,12 +30,12 @@ module.exports = {
     const { newGame } = req.body;
     newGame.id = id;
     id++;
-    // if (req.query.gamearray === "played") {
-    //   playedGames.push(newGame);
-    // } else if (req.query.gamearray === "notplayed") {
-    //   unplayedGames.push(newGame);
-    // }
-    res.status(200).send({ playedGames, unplayedGames });
+    if (req.query.gamearray === "played") {
+      games.push(newGame);
+    } else if (req.query.gamearray === "notplayed") {
+      unplayedGames.push(newGame);
+    }
+    res.status(200).send({ games, unplayedGames });
   },
 
   // * Put
@@ -37,9 +46,9 @@ module.exports = {
   // * Delete
   deleteGame: (req, res) => {
     const { id } = req.body;
-    const index = playedGames.findIndex(item => item.id === +id);
+    const index = games.findIndex(item => item.id === +id);
     // const index =
-    playedGames.splice(index, 1);
-    res.status(200).send(playedGames);
+    games.splice(index, 1);
+    res.status(200).send(games);
   }
 };

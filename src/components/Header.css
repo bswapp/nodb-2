@@ -1,5 +1,13 @@
 header {
-  height: 15vh;
+  height: 25vh;
   width: 100vw;
   background: black;
+}
+
+img {
+  height: 100%;
+  width: 30%;
+  background-repeat: no-repeat;
+  background-image: url("../photos/NDImage.png");
+  object-fit: fill;
 }

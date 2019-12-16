@@ -3,21 +3,24 @@ import "./App.css";
 import Add from "./components/Add";
 import axios from "axios";
 import Header from "./components/Header";
+import GamesPlayed from "./components/GamesPlayed";
+import NotPlayedItem from "./components/NotPlayedItem";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      playedGames: [],
+      games: [],
       unplayedGames: []
     };
   }
 
   componentDidMount() {
     axios.get("/api/games").then(res => {
+      // console.log(res.data.games);
       this.setState({
-        playedGames: res.data,
-        unplayedGames: res.data
+        games: res.data.games,
+        unplayedGames: res.data.unplayedGames
       });
     });
   }
@@ -25,7 +28,8 @@ class App extends Component {
   addGame(newGame) {
     axios.post("/api/games?gamearray=played", { newGame }).then(res => {
       this.setState({
-        playedGames: res.data
+        games: res.data.games,
+        unplayedGames: res.data.unplayedGames
       });
     });
   }
@@ -42,7 +46,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-
+        <GamesPlayed games={this.state.games} />
+        <NotPlayedItem unplayedGames={this.state.unplayedGames} />
         <Add />
       </div>
     );
