@@ -46,10 +46,14 @@ module.exports = {
 
   // * Delete
   deleteGame: (req, res) => {
-    const { id } = req.body;
-    const index = games.findIndex(item => item.id === +id);
-    // const index =
-    games.splice(index, 1);
-    res.status(200).send(games);
+    const { id } = req.params;
+    if (req.query.deletegame === "played") {
+      const index = games.findIndex(item => item.id === +id);
+      games.splice(index, 1);
+    } else if (req.query.deletegame === "notplayed") {
+      const index = unplayedGames.findIndex(item => item.id === +id);
+      unplayedGames.splice(index, 1);
+    }
+    res.status(200).send({ games, unplayedGames });
   }
 };

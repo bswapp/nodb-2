@@ -26,6 +26,16 @@ class GamesPlayed extends Component {
               <div className="mode">Mode: {e.mode}</div>
               <div>Cheats: {e.cheats}</div>
             </div>
+            <button className="game-buttons">Edit</button>
+            <button
+              className="game-buttons"
+              onClick={() => {
+                this.props.deleteFn(e.id, "played");
+              }}
+            >
+              Delete
+            </button>
+            <button className="game-buttons">Submit</button>
           </div>
         ))}
       </div>

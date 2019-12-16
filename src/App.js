@@ -15,6 +15,7 @@ class App extends Component {
     };
     this.addGame = this.addGame.bind(this);
     this.notplayGame = this.notplayGame.bind(this);
+    this.deleteGame = this.deleteGame.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +27,15 @@ class App extends Component {
       });
     });
   }
+
+  deleteGame = (id, query) => {
+    axios.delete(`/api/games/${id}?deletegame=${query}`).then(res => {
+      this.setState({
+        games: res.data.games,
+        unplayedGames: res.data.unplayedGames
+      });
+    });
+  };
 
   addGame(newGame) {
     console.log("this is cool");
@@ -44,12 +54,27 @@ class App extends Component {
     });
   }
 
+  // handleUpdateGame = id => {
+  //   let updatedGame = {
+  //     image: this.state.image,
+  //     title: this.state.title,
+  //     mode: this.state.mode,
+  //     array: this.state.array,
+  //     cheats: this.state.cheats,
+  //     notes:
+  //   };
+  //   axios.put("/api/games/:id");
+  // };
+
   render() {
     return (
       <div className="App">
         <Header />
-        <GamesPlayed games={this.state.games} />
-        <NotPlayedItem unplayedGames={this.state.unplayedGames} />
+        <GamesPlayed deleteFn={this.deleteGame} games={this.state.games} />
+        <NotPlayedItem
+          deleteFn={this.deleteGame}
+          unplayedGames={this.state.unplayedGames}
+        />
         <Add addGame={this.addGame} notplayGame={this.notplayGame} />
       </div>
     );

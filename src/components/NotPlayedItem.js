@@ -18,11 +18,25 @@ class NotPlayedItem extends Component {
           <div className="title">Games I Have Not Played</div>
         </wrapper>
         {this.props.unplayedGames.map(e => (
-          <div className="info-holder">
-            <div>{e.image}</div>
-            <div>{e.title}</div>
-            <div>Mode: {e.mode}</div>
-            <div>Cheats: {e.cheats}</div>
+          <div className="display-game">
+            <div className="info-holder">
+              <div>{e.image}</div>
+              <div>{e.title}</div>
+              <div>Mode: {e.mode}</div>
+              <div>Cheats: {e.cheats}</div>
+            </div>
+            <button className="game-buttons">Edit</button>
+
+            <button
+              className="game-buttons"
+              onClick={() => {
+                this.props.deleteFn(e.id, "notplayed");
+              }}
+            >
+              Delete
+            </button>
+
+            <button className="game-buttons">Submit</button>
           </div>
         ))}
       </div>

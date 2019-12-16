@@ -10,7 +10,7 @@ app.use(express.json());
 app.get("/api/games", ctrl.getGames);
 app.post("/api/games", ctrl.addGame);
 app.put("/api/games/:id", ctrl.updateGame);
-app.delete("/api/games:id", ctrl.deleteGame);
+app.delete("/api/games/:id", ctrl.deleteGame);
 
 app.listen(SERVER_PORT, () =>
   console.log(`${SERVER_PORT} welcome to the club`)

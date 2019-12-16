@@ -26,5 +26,13 @@ wrapper {
   border: solid 3px #5a2b02;
 }
 
-.game-title {
+.game-buttons {
+  color: #a06729;
+  border: solid 1px #d8a163;
+  background: #400508;
+  border-radius: 5px;
+}
+
+.game-buttons:hover {
+  background: white;
 }

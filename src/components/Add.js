@@ -84,7 +84,9 @@ class Add extends Component {
             onChange={e => this.handleChange(e)}
           />
 
-          <button onClick={this.chooseArray}>Add Game</button>
+          <button className="add-button" onClick={this.chooseArray}>
+            Add Game
+          </button>
         </div>
       </div>
     );
