@@ -47,33 +47,35 @@ class App extends Component {
   }
 
   notplayGame(newGame) {
-    axios.post("/api/games?gamearray=notplayed", { newGame }).then(res => {
+    axios.post("api/games?gamearray=notplayed", { newGame }).then(res => {
       this.setState({
         unplayedGames: res.data.unplayedGames
       });
     });
   }
 
-  // handleUpdateGame = id => {
-  //   let updatedGame = {
-  //     image: this.state.image,
-  //     title: this.state.title,
-  //     mode: this.state.mode,
-  //     array: this.state.array,
-  //     cheats: this.state.cheats,
-  //     notes:
-  //   };
-  //   axios.put("/api/games/:id");
-  // };
+  handleUpdateGame = (id, query) => {
+    axios.put(`/api/games/${id}?editgame=${query}`).then(res => {
+      this.setState({
+        games: res.data.games,
+        unplayedGames: res.data.unplayedGames
+      });
+    });
+  };
 
   render() {
     return (
       <div className="App">
         <Header />
-        <GamesPlayed deleteFn={this.deleteGame} games={this.state.games} />
+        <GamesPlayed
+          handleUpdateGame={this.handleUpdateGame}
+          deleteFn={this.deleteGame}
+          games={this.state.games}
+        />
         <NotPlayedItem
           deleteFn={this.deleteGame}
           unplayedGames={this.state.unplayedGames}
+          handleUpdateGame={this.handleUpdateGame}
         />
         <Add addGame={this.addGame} notplayGame={this.notplayGame} />
       </div>

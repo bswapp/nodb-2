@@ -41,7 +41,17 @@ module.exports = {
 
   // * Put
   updateGame: (req, res) => {
-    // * I expect to edit the game, save it, and have it show up on the right array. U
+    const { id } = req.params;
+    if (req.query.editgame === "played") {
+      const index = games.findIndex(el => el.id === +id);
+      const gameEdit = games.splice(index, 1);
+      unplayedGames.push(gameEdit[0]);
+    } else if (req.query.editgame === "notplayed") {
+      const index = unplayedGames.findIndex(el => el.id === +id);
+      const gameEdit = unplayedGames.splice(index, 1);
+      games.push(gameEdit[0]);
+    }
+    res.status(200).send({ games, unplayedGames });
   },
 
   // * Delete

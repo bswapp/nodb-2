@@ -25,7 +25,14 @@ class NotPlayedItem extends Component {
               <div>Mode: {e.mode}</div>
               <div>Cheats: {e.cheats}</div>
             </div>
-            <button className="game-buttons">Edit</button>
+            <button
+              onClick={() => {
+                this.props.handleUpdateGame(e.id, "notplayed");
+              }}
+              className="game-buttons"
+            >
+              Edit
+            </button>
 
             <button
               className="game-buttons"
