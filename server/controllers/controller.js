@@ -16,7 +16,7 @@ const unplayedGames = [
     cheats: "yes"
   }
 ];
-let id = 0;
+let id = 2;
 
 module.exports = {
   // * Get
@@ -28,6 +28,7 @@ module.exports = {
   // * Post
   addGame: (req, res) => {
     const { newGame } = req.body;
+    console.log(newGame);
     newGame.id = id;
     id++;
     if (req.query.gamearray === "played") {

@@ -13,6 +13,8 @@ class App extends Component {
       games: [],
       unplayedGames: []
     };
+    this.addGame = this.addGame.bind(this);
+    this.notplayGame = this.notplayGame.bind(this);
   }
 
   componentDidMount() {
@@ -26,10 +28,10 @@ class App extends Component {
   }
 
   addGame(newGame) {
+    console.log("this is cool");
     axios.post("/api/games?gamearray=played", { newGame }).then(res => {
       this.setState({
-        games: res.data.games,
-        unplayedGames: res.data.unplayedGames
+        games: res.data.games
       });
     });
   }
@@ -37,7 +39,7 @@ class App extends Component {
   notplayGame(newGame) {
     axios.post("/api/games?gamearray=notplayed", { newGame }).then(res => {
       this.setState({
-        unplayedGames: res.data
+        unplayedGames: res.data.unplayedGames
       });
     });
   }
@@ -48,7 +50,7 @@ class App extends Component {
         <Header />
         <GamesPlayed games={this.state.games} />
         <NotPlayedItem unplayedGames={this.state.unplayedGames} />
-        <Add />
+        <Add addGame={this.addGame} notplayGame={this.notplayGame} />
       </div>
     );
   }
