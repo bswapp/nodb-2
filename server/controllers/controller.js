@@ -22,7 +22,12 @@ module.exports = {
   // * Get
   getGames: (req, res) => {
     //* I expect get games to get the games arrays (2)
-    res.status(200).send({ games, unplayedGames });
+    res
+      .status(200)
+      .send({ games, unplayedGames })
+      .catch(err => {
+        res.status(500).send({ ErrorMessage: "Its Locked!" });
+      });
   },
 
   // * Post
@@ -36,7 +41,12 @@ module.exports = {
     } else if (req.query.gamearray === "notplayed") {
       unplayedGames.push(newGame);
     }
-    res.status(200).send({ games, unplayedGames });
+    res
+      .status(200)
+      .send({ games, unplayedGames })
+      .catch(err => {
+        res.status(500).send({ ErrorMessage: "Its Locked!" });
+      });
   },
 
   // * Put

@@ -42,8 +42,6 @@ class NotPlayedItem extends Component {
             >
               Delete
             </button>
-
-            <button className="game-buttons">Submit</button>
           </div>
         ))}
       </div>
